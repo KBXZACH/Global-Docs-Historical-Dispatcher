@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="516,1412" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1488,1394" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -64,10 +64,9 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="526,1347.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="526,1329" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="SQL" />
       <Variable x:TypeArguments="sd:DataTable" Name="DataTableOutput" />
@@ -79,47 +78,44 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="484,690" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile Condition="[DELETE.Count&gt;100]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="484,680" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="404.666666666667,520.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="404,515" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" sap:VirtualizedContainerService.HintSize="362.666666666667,80.6666666666667" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="Global Docs Queue" Result="[DELETE]" Skip="[int_Skip]" Top="100" />
-          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="362.666666666667,308" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DELETE]">
+          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" sap:VirtualizedContainerService.HintSize="362,79" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="Global Docs Queue" Result="[DELETE]" Skip="[int_Skip]" TimeoutMS="1800000" Top="100" />
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="362,304" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DELETE]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="326,172.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="326,171" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" sap:VirtualizedContainerService.HintSize="284,80.6666666666667" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[DELETE]" />
+                  <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[DELETE]" />
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
         </Sequence>
       </ui:InterruptibleDoWhile.Body>
-      <ui:InterruptibleDoWhile.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="DELETE.Count&gt;100" />
-      </ui:InterruptibleDoWhile.Condition>
     </ui:InterruptibleDoWhile>
-    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=KBXREPLPROD.khc.local;Initial Catalog=TOPSReporting;Integrated Security=True" DatabaseConnection="[SQL]" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[DataTableOutput]" DisplayName="Run query" ExistingDbConnection="[SQL]" sap:VirtualizedContainerService.HintSize="484,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="&#xA;&#xA;--&#xA;--&#xA;-- 10/20/22            Landon        Created&#xA;-- 10/26/22            Landon        Added Portal Path&#xA;-- 12/29/22               Landon         Added POD Consolidation Path logic&#xA;--&#xA;&#xA; &#xA;&#xA;DROP TABLE IF EXISTS #Loads&#xA;DROP TABLE IF EXISTS #LoadDoc&#xA;&#xA; &#xA;&#xA;select Distinct&#xA;l.ActualCarrierOrgId AS Carrier&#xA;,l.loadid&#xA;,l.LoadNbr AS BOL&#xA;,l.PkupDate&#xA;,l.DelvDate&#xA;,l.ActualFleetScac AS SCAC&#xA;,l.ActualSubFleetScac AS SubScac&#xA;,l.ownerorgid AS OwnerOrgId&#xA;,l.ProNbr&#xA;,o.OwnerName&#xA;,l.ShipperPkupNbr&#xA;INTO #Loads&#xA;from TOPSAnalyst.dbo.POD p&#xA;INNER JOIN TOPS.dbo.loads l WITH (NOLOCK)&#xA;ON p.LoadNbr = l.LoadNbr&#xA;INNER JOIN TOPS.dbo.Owner o WITH (NOLOCK)&#xA;ON l.OwnerOrgId = o.OwnerId&#xA;WHERE l.LoadVisibleCd NOT IN ('-15','-16','-17')&#xA;AND l.LoadStatusColor &lt;&gt; 'RED'&#xA;AND l.LoadId NOT LIKE'%--%'&#xA;&#xA; &#xA;&#xA;&#xA;SELECT DISTINCT&#xA;l.ActualCarrierOrgId AS Carrier&#xA;,l.loadid&#xA;,l.LoadNbr AS BOL&#xA;,l.PkupDate&#xA;,l.DelvDate&#xA;,l.ActualFleetScac AS SCAC&#xA;,l.ActualSubFleetScac AS SubScac&#xA;,l.ownerorgid AS OwnerOrgId&#xA;,l.ProNbr&#xA;,o.OwnerName&#xA;,l.ShipperPkupNbr&#xA;INTO #LoadDoc&#xA;FROM TOPS.dbo.LoadDocuments ld WITH(NOLOCK)&#xA;INNER JOIN TOPS.dbo.loads l WITH (NOLOCK)&#xA;ON ld.loadid = l.Loadid&#xA;INNER JOIN TOPS.dbo.Owner o WITH (NOLOCK)&#xA;ON l.OwnerOrgId = o.OwnerId&#xA;&#xA; &#xA;&#xA;where ld.DocType = 'PROOF OF DELIVERY'&#xA;--AND CAST(ld.CreateDtTm AS DATE) = DATEADD(day,-1,CAST(GETDATE() AS DATE))&#xA;&#xA;AND CAST(ld.CreateDtTm AS DATE) &lt;= '2022-10-24' --Backfill queue &#xA;AND CAST(ld.CreateDtTm AS DATE) &gt;= '2022-04-01' &#xA;&#xA;&#xA;select top 10&#xA;ld.LoadId&#xA;,Count(ld.LoadId) AS DocCount&#xA;Into #docCount&#xA;from TOPS.dbo.LoadDocuments ld WITH(NOLOCK)&#xA;inner join #LoadDoc p&#xA;ON p.loadid = ld.loadid&#xA;where ld.DocType = 'PROOF OF DELIVERY'&#xA;and p.LoadId is not null&#xA;&#xA; &#xA;&#xA;group by ld.LoadId&#xA;&#xA; &#xA;&#xA;SELECT DISTINCT top 1000 &#xA;p.*&#xA;,CASE WHEN o.PortalPath is null AND dcc.DocCount = 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\PODStaging' &#xA;when o.PortalPath is not null and dcc.DocCount &gt; 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\POD Consolidation'&#xA;WHEN o.PortalPath is null AND dcc.DocCount &gt; 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\POD Consolidation'&#xA;ELSE o.PortalPath END AS PortalPath&#xA;&#xA; &#xA;&#xA;FROM #LoadDoc p&#xA;LEFT JOIN #Loads l&#xA;ON p.loadid = l.loadid&#xA;INNER JOIN TOPSAnalyst.dbo.PODOwner o&#xA;ON p.OwnerOrgId = o.OwnerId&#xA;LEFT JOIN #docCount dcc&#xA;ON p.LoadId = dcc.LoadId&#xA;where l.LoadId is null&#xA;&#xA; &#xA;&#xA;&#xA;drop table #Loads;&#xA;drop table #LoadDoc;&#xA;drop table #docCount;&#xA;&#xA;" TimeoutMS="240000">
+    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=KBXREPLPROD.khc.local;Initial Catalog=TOPSReporting;Integrated Security=True" DatabaseConnection="[SQL]" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[DataTableOutput]" DisplayName="Run query" ExistingDbConnection="[SQL]" sap:VirtualizedContainerService.HintSize="484,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="&#xA;&#xA;--&#xA;--&#xA;-- 10/20/22            Landon        Created&#xA;-- 10/26/22            Landon        Added Portal Path&#xA;-- 12/29/22               Landon         Added POD Consolidation Path logic&#xA;--&#xA;&#xA; &#xA;&#xA;DROP TABLE IF EXISTS #Loads&#xA;DROP TABLE IF EXISTS #LoadDoc&#xA;&#xA; &#xA;&#xA;select Distinct&#xA;l.ActualCarrierOrgId AS Carrier&#xA;,l.loadid&#xA;,l.LoadNbr AS BOL&#xA;,l.PkupDate&#xA;,l.DelvDate&#xA;,l.ActualFleetScac AS SCAC&#xA;,l.ActualSubFleetScac AS SubScac&#xA;,l.ownerorgid AS OwnerOrgId&#xA;,l.ProNbr&#xA;,o.OwnerName&#xA;,l.ShipperPkupNbr&#xA;INTO #Loads&#xA;from TOPSAnalyst.dbo.POD p&#xA;INNER JOIN TOPS.dbo.loads l WITH (NOLOCK)&#xA;ON p.LoadNbr = l.LoadNbr&#xA;INNER JOIN TOPS.dbo.Owner o WITH (NOLOCK)&#xA;ON l.OwnerOrgId = o.OwnerId&#xA;WHERE l.LoadVisibleCd NOT IN ('-15','-16','-17')&#xA;AND l.LoadStatusColor &lt;&gt; 'RED'&#xA;AND l.LoadId NOT LIKE'%--%'&#xA;&#xA; &#xA;&#xA;&#xA;SELECT DISTINCT&#xA;l.ActualCarrierOrgId AS Carrier&#xA;,l.loadid&#xA;,l.LoadNbr AS BOL&#xA;,l.PkupDate&#xA;,l.DelvDate&#xA;,l.ActualFleetScac AS SCAC&#xA;,l.ActualSubFleetScac AS SubScac&#xA;,l.ownerorgid AS OwnerOrgId&#xA;,l.ProNbr&#xA;,o.OwnerName&#xA;,l.ShipperPkupNbr&#xA;INTO #LoadDoc&#xA;FROM TOPS.dbo.LoadDocuments ld WITH(NOLOCK)&#xA;INNER JOIN TOPS.dbo.loads l WITH (NOLOCK)&#xA;ON ld.loadid = l.Loadid&#xA;INNER JOIN TOPS.dbo.Owner o WITH (NOLOCK)&#xA;ON l.OwnerOrgId = o.OwnerId&#xA;&#xA; &#xA;&#xA;where ld.DocType = 'PROOF OF DELIVERY'&#xA;--AND CAST(ld.CreateDtTm AS DATE) = DATEADD(day,-1,CAST(GETDATE() AS DATE))&#xA;&#xA;AND CAST(ld.CreateDtTm AS DATE) &lt;= '2022-10-24' --Backfill queue &#xA;AND CAST(ld.CreateDtTm AS DATE) &gt;= '2022-04-01' &#xA;&#xA;&#xA;select top 10&#xA;ld.LoadId&#xA;,Count(ld.LoadId) AS DocCount&#xA;Into #docCount&#xA;from TOPS.dbo.LoadDocuments ld WITH(NOLOCK)&#xA;inner join #LoadDoc p&#xA;ON p.loadid = ld.loadid&#xA;where ld.DocType = 'PROOF OF DELIVERY'&#xA;and p.LoadId is not null&#xA;&#xA; &#xA;&#xA;group by ld.LoadId&#xA;&#xA; &#xA;&#xA;SELECT DISTINCT top 1000 &#xA;p.*&#xA;,CASE WHEN o.PortalPath is null AND dcc.DocCount = 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\PODStaging' &#xA;when o.PortalPath is not null and dcc.DocCount &gt; 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\POD Consolidation'&#xA;WHEN o.PortalPath is null AND dcc.DocCount &gt; 1 THEN 'D:\Users\KBXLBOT5\kochind.com\KBXL Analytics - PODs\POD Consolidation'&#xA;ELSE o.PortalPath END AS PortalPath&#xA;&#xA; &#xA;&#xA;FROM #LoadDoc p&#xA;LEFT JOIN #Loads l&#xA;ON p.loadid = l.loadid&#xA;INNER JOIN TOPSAnalyst.dbo.PODOwner o&#xA;ON p.OwnerOrgId = o.OwnerId&#xA;LEFT JOIN #docCount dcc&#xA;ON p.LoadId = dcc.LoadId&#xA;where l.LoadId is null&#xA;&#xA; &#xA;&#xA;&#xA;drop table #Loads;&#xA;drop table #LoadDoc;&#xA;drop table #docCount;&#xA;&#xA;" TimeoutMS="240000">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <If Condition="[DataTableOutput is Nothing OrElse DataTableOutput.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="484,299.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[DataTableOutput is Nothing OrElse DataTableOutput.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="484,290" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Else>
-        <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" sap:VirtualizedContainerService.HintSize="284,135.333333333333" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[DataTableOutput]" QueueName="Global Docs Queue" />
+        <ui:BulkAddQueueItems DisplayName="Bulk Add Queue Items" sap:VirtualizedContainerService.HintSize="284,132" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[DataTableOutput]" QueueName="Global Docs Queue" TimeoutMS="1800000" />
       </If.Else>
     </If>
   </Sequence>
